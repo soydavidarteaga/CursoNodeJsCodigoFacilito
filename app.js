@@ -25,6 +25,12 @@ app.set("view engine","jade"); //Motor de vista
 		res.render("index");
 	});
 	app.get("/login",function(res,res){
+
+			res.render("login");
+
+		
+	});
+	app.get("/signup",function(res,res){
 		User.find(function(err,doc){
 			console.log(doc);
 			res.render("login");
@@ -44,6 +50,12 @@ app.set("view engine","jade"); //Motor de vista
 			
 		});
 		
+	});
+	app.post("/sessions",function(req,res){
+		User.findOne({email:req.body.email,password:req.body.password},"",function(err,docs){
+			console.log(docs);
+			res.send("Hola mundo");
+		});
 	});
 /*Fin RUTAS */
 
