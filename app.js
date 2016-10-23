@@ -4,6 +4,10 @@ var app = express();
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
+/*Modelos*/
+var User = require("./models/user").User;
+/*Fin Modelos*/
+
 
 app.set("view engine","jade"); //Motor de vista
 
@@ -15,16 +19,6 @@ app.set("view engine","jade"); //Motor de vista
 	/*Fin servir artchivos*/
 /*fin middlewares
 
-/*MODELOS Y ESQUEMAS */
-	mongoose.connect("mongodb://localhost/fotos");
-	var userSchemaJson = {
-		email:String,
-		password:String
-	};
-	var user_schema = new Schema(userSchemaJson);
-
-	var User = mongoose.model("User",user_schema);
-/*Fin Modelos*/
 
 /*RUTAS */
 	app.get("/",function(req,res){
