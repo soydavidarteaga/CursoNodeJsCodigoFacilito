@@ -1,0 +1,13 @@
+extends ../../layout.jade
+block contenido
+	div(class="col-md-8 remove-float center-block big-top-space")
+		form(action="/imagenes",method="POST")
+			div.form-group
+				label(for="title") Titulo
+				input(type="text",name="title",placeholder="Ingresa titulo de la imagen",id="title",class="form-control")
+			div.div-group
+				label(for="archivo") Artchivo
+				input(type="file",name="archivo",placeholder="Contraseña",id="archivo",class="form-control")
+			div(class="row top-space")
+					div(class="col-xs-12 col-sm-6")
+						input.btn.btn-info(type="submit",value="Guardar")
