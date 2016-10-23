@@ -10,6 +10,9 @@ var User = require("./models/user").User;
 /*Session */
 var session = require("express-session");
 /*Fin Session*/
+/*Routing*/
+var router_app = require("./routes_app");
+/*Fin Routing*/
 
 app.set("view engine","jade"); //Motor de vista
 
@@ -20,6 +23,8 @@ app.set("view engine","jade"); //Motor de vista
 		app.use(bodyParser.urlencoded({extended:true})); 
 		app.use(session({
 			secret: "123byuhbsdah12ub"
+			resave: false,
+			saveUninitialized: false
 
 		}));
 	/*Fin servir artchivos*/
@@ -65,6 +70,7 @@ app.set("view engine","jade"); //Motor de vista
 
 		});
 	});
+	app.use("/app",router_app);
 /*Fin RUTAS */
 
 
