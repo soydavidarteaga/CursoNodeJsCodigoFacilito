@@ -21,7 +21,13 @@ var user_schema = new Schema({
 	email: String,
 	date_of_birth: Date
 });
-
+/*Virtuals*/
+	user_schema.virtual("password_confirmation").get(function(){
+		return this.p_c
+	}).set(function(password){
+		this.p_c = password;
+	});
+/*Fin Virtuals*/
 var User = mongoose.model("User",user_schema);
 
 module.exports.User = User;
