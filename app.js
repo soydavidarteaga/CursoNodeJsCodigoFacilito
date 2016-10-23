@@ -9,6 +9,7 @@ var User = require("./models/user").User;
 /*Fin Modelos*/
 /*Session */
 var session = require("express-session");
+var session_middleware = require("./middlewares/session");
 /*Fin Session*/
 /*Routing*/
 var router_app = require("./routes_app");
@@ -17,16 +18,18 @@ var router_app = require("./routes_app");
 app.set("view engine","jade"); //Motor de vista
 
 /*Middlewares*/
-	/*Servir archivos*/
-		app.use("/estatico",express.static('public'));
-		app.use(bodyParser.json()); //Para peticiones json
-		app.use(bodyParser.urlencoded({extended:true})); 
-		app.use(session({
-			secret: "123byuhbsdah12ub"
+	app.use(session({
+			secret: "123byuhbsdah12ub",
 			resave: false,
 			saveUninitialized: false
 
 		}));
+		app.use("/app",session_middleware)
+		app.use("/app",router_app);
+	/*Servir archivos*/
+		app.use("/estatico",express.static('public'));
+		app.use(bodyParser.json()); //Para peticiones json
+		app.use(bodyParser.urlencoded({extended:true})); 
 	/*Fin servir artchivos*/
 /*fin middlewares
 
@@ -70,7 +73,7 @@ app.set("view engine","jade"); //Motor de vista
 
 		});
 	});
-	app.use("/app",router_app);
+	
 /*Fin RUTAS */
 
 
