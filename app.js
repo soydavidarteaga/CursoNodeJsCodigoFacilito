@@ -3,7 +3,11 @@ var express = require("express");
 var app = express();
 
 app.set("view engine","jade"); //Motor de vista
-
+/*Middlewares*/
+	/*Servir archivos*/
+		app.use("/estatico",express.static('public'));
+	/*Fin servir artchivos*/
+/*fin middlewares
 
 
 /*RUTAS */
