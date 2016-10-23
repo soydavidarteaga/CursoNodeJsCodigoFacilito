@@ -7,7 +7,9 @@ var Schema = mongoose.Schema;
 /*Modelos*/
 var User = require("./models/user").User;
 /*Fin Modelos*/
-
+/*Session */
+var session = require("express-session");
+/*Fin Session*/
 
 app.set("view engine","jade"); //Motor de vista
 
@@ -16,12 +18,17 @@ app.set("view engine","jade"); //Motor de vista
 		app.use("/estatico",express.static('public'));
 		app.use(bodyParser.json()); //Para peticiones json
 		app.use(bodyParser.urlencoded({extended:true})); 
+		app.use(session({
+			secret: "123byuhbsdah12ub"
+
+		}));
 	/*Fin servir artchivos*/
 /*fin middlewares
 
 
 /*RUTAS */
 	app.get("/",function(req,res){
+		console.log(req.session.user_id);
 		res.render("index");
 	});
 	app.get("/login",function(res,res){
@@ -52,9 +59,10 @@ app.set("view engine","jade"); //Motor de vista
 		
 	});
 	app.post("/sessions",function(req,res){
-		User.findOne({email:req.body.email,password:req.body.password},"",function(err,docs){
-			console.log(docs);
-			res.send("Hola mundo");
+		User.findOne({email:req.body.email,password:req.body.password},"",function(err,user){
+			req.session.user_id = user._id;
+			res.send("Hola Mundo");
+
 		});
 	});
 /*Fin RUTAS */
