@@ -48,7 +48,7 @@ app.set("view engine","jade"); //Motor de vista
 	app.get("/signup",function(res,res){
 		User.find(function(err,doc){
 			console.log(doc);
-			res.render("login");
+			res.render("signup");
 		});
 		
 	});
@@ -69,7 +69,7 @@ app.set("view engine","jade"); //Motor de vista
 	app.post("/sessions",function(req,res){
 		User.findOne({email:req.body.email,password:req.body.password},"",function(err,user){
 			req.session.user_id = user._id;
-			res.send("Hola Mundo");
+			res.redirect("/app");
 
 		});
 	});
