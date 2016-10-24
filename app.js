@@ -8,7 +8,7 @@ var Schema = mongoose.Schema;
 var User = require("./models/user").User;
 /*Fin Modelos*/
 /*Session */
-var session = require("express-session");
+var cookieSession = require("cookie-session");
 var session_middleware = require("./middlewares/session");
 /*Fin Session*/
 /*Routing*/
@@ -18,12 +18,10 @@ var router_app = require("./routes_app");
 app.set("view engine","jade"); //Motor de vista
 
 /*Middlewares*/
-	app.use(session({
-			secret: "123byuhbsdah12ub",
-			resave: false,
-			saveUninitialized: false
-
-		}));
+	app.use(cookieSession({
+		name: "session",
+		keys: ["llave-1","llave-2"]
+	}));
 		
 	/*Servir archivos*/
 		app.use("/estatico",express.static('public'));
