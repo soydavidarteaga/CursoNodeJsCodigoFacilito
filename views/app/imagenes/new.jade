@@ -1,10 +1,11 @@
 extends ../../layout.jade
 block contenido
 	div(class="col-md-8 remove-float center-block big-top-space")
-		form(action="/imagenes",method="POST")
+		h1 Subir Imagen
+		form(action="/app/imagenes",method="post")
 			div.form-group
 				label(for="title") Titulo
-				input(type="text",name="title",placeholder="Ingresa titulo de la imagen",id="title",class="form-control")
+				input(type="text",name="title",class="form-control",id="title")
 			div.div-group
 				label(for="archivo") Artchivo
 				input(type="file",name="archivo",placeholder="Contraseña",id="archivo",class="form-control")

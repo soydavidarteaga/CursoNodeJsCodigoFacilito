@@ -24,13 +24,14 @@ app.set("view engine","jade"); //Motor de vista
 			saveUninitialized: false
 
 		}));
-		app.use("/app",session_middleware)
-		app.use("/app",router_app);
+		
 	/*Servir archivos*/
 		app.use("/estatico",express.static('public'));
 		app.use(bodyParser.json()); //Para peticiones json
 		app.use(bodyParser.urlencoded({extended:true})); 
 	/*Fin servir artchivos*/
+	app.use("/app",session_middleware)
+	app.use("/app",router_app);
 /*fin middlewares
 
 
