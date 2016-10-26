@@ -14,7 +14,7 @@ var session_middleware = require("./middlewares/session");
 /*Routing*/
 var router_app = require("./routes_app");
 /*Fin Routing*/
-
+var methodOverride = require("method-override"); //PUT;DELETE
 app.set("view engine","jade"); //Motor de vista
 
 /*Middlewares*/
@@ -28,7 +28,8 @@ app.set("view engine","jade"); //Motor de vista
 		app.use(bodyParser.json()); //Para peticiones json
 		app.use(bodyParser.urlencoded({extended:true})); 
 	/*Fin servir artchivos*/
-	app.use("/app",session_middleware)
+	app.use(methodOverride("_method"));
+	app.use("/app",session_middleware);
 	app.use("/app",router_app);
 /*fin middlewares
 
