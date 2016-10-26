@@ -35,7 +35,6 @@ app.set("view engine","jade"); //Motor de vista
 
 /*RUTAS */
 	app.get("/",function(req,res){
-		console.log(req.session.user_id);
 		res.render("index");
 	});
 	app.get("/login",function(res,res){
