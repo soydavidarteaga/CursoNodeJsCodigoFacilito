@@ -40,3 +40,9 @@ nav li a:hover{
 .tr:nth-of-type(odd){
 	background-color: #eee;
 }
+form.link input[type="submit"]{
+	background-color:transparent;
+	border:none;
+	color:rgb(200,50,50); 
+
+}
