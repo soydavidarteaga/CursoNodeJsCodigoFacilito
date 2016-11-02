@@ -2,12 +2,12 @@ extends ../../layout.jade
 block contenido
 	div(class="col-md-8 remove-float center-block big-top-space")
 		h1 Subir Imagen
-		form(action="/app/imagenes",method="post")
+		form(action="/app/imagenes",method="post" enctype="multipart/form-data")
 			div.form-group
 				label(for="title") Titulo
 				input(type="text",name="title",class="form-control",id="title")
 			div.div-group
-				label(for="archivo") Artchivo
+				label(for="archivo") Archivo
 				input(type="file",name="archivo",placeholder="Contraseña",id="archivo",class="form-control")
 			div(class="row top-space")
 					div(class="col-xs-12 col-sm-6")

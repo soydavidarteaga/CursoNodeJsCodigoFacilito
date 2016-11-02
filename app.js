@@ -16,12 +16,15 @@ var router_app = require("./routes_app");
 /*Fin Routing*/
 var methodOverride = require("method-override"); //PUT;DELETE
 app.set("view engine","jade"); //Motor de vista
+//Subir imagenes Express-Formidable
+var formidable = require("express-formidable")
 
 /*Middlewares*/
 	app.use(cookieSession({
 		name: "session",
 		keys: ["llave-1","llave-2"]
 	}));
+	app.use(formidable({ keepExtensions: true}))
 		
 	/*Servir archivos*/
 		app.use("/estatico",express.static('public'));
